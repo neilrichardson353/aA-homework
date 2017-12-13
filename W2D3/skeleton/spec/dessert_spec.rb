@@ -10,14 +10,15 @@ describe Dessert do
 
   describe "#initialize" do
     it "sets a type"
-
+      expect(self.initialize('dessert',3, "Neil")).to eq(@type == 'dessert')
     it "sets a quantity"
-
+      expect(self.initialize('dessert',3, "Neil")).to eq(@quantity == 3)
     it "starts ingredients as an empty array"
-
+      expect(self.initialize('dessert',3, "Neil")).to eq(@ingredients == [])
     it "raises an argument error when given a non-integer quantity"
+      expect { self.initialize('dessert',"3", "Neil") }.to raise_error(ArgumentError)
   end
-
+=begin
   describe "#add_ingredient" do
     it "adds an ingredient to the ingredients array"
   end
@@ -39,4 +40,5 @@ describe Dessert do
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in"
   end
+=end
 end
