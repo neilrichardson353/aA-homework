@@ -1,3 +1,4 @@
+require 'byebug'
 class Board
   attr_accessor :cups
 
@@ -16,13 +17,27 @@ class Board
   end
 
   def valid_move?(start_pos)
-    if start_pos < 0 || start_pos > 13 || @stone[start_pos].empty?
+    if start_pos < 1 || start_pos > 14
       raise "Invalid starting cup"
     end
     true
   end
 
   def make_move(start_pos, current_player_name)
+    num_of_stones = @cups[start_pos]
+    @cups[start_pos] = []
+    while num_of_stones.count > 0
+      if (start_pos.between?(1,6) && @side != 1 ||
+          start_pos.between?(7,12) && @side != 2)
+        next
+      end
+      @cups[start_pos] = [] if @cups[start_pos] == [0]
+      @cups[start_pos] << num_of_stones.shift
+      start_pos += 1
+      start_pos = 0 if start_pos > 13
+    end
+    render
+    next_turn(start_pos)
   end
 
   def next_turn(ending_cup_idx)
