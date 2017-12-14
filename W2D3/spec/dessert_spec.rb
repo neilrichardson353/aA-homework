@@ -51,6 +51,8 @@ describe Dessert do
     it "subtracts an amount from the quantity" do
       brownie.eat(1)
     expect(brownie.quantity).to eq(2)
+  end
+  
     it "raises an error if the amount is greater than the quantity" do
     expect {self.eat('nothing') }.to raise(ArgumentError)
   end
