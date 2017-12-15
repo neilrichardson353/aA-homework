@@ -14,8 +14,13 @@ attr_accessor :cache, :count
 
     def add(el)
       # adds element to cache according to LRU principle
-      @cache << el unless @cache.include?(el)
-      @cache = @cache.drop(@max) unless count <= @max
+      if @cache.include?(el) == false
+        @cache << el
+        @cache = @cache.drop(@max) unless count <= @max
+      else
+        @cache.delete(el)
+        @cache << el
+      end
     end
 
     def show
