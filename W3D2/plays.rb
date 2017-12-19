@@ -48,4 +48,25 @@ class Play
         id = ?
     SQL
   end
+
+  def self.all
+    data = PlayDBConnection.instance.execute("SELECT * FROM Plays")
+    data.map { |datum| Play.new(datum) }
+  end
+
+  def find_by_name(name)
+
+  end
+
+  def new(options)
+    @id             = options['id']
+    @title          = options['title']
+    @year           = options['year']
+    @playwright_id  = options['playwright_id']
+  end
+
+  def create
+    raise "#{self} already exist" if @id
+    PlayDBConnection.instance.execute()
+  end
 end
