@@ -55,7 +55,13 @@ class Play
   end
 
   def find_by_name(name)
-
+    raise "#{name} not in database" unless @title
+    PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id, @id)
+    SELECT
+      title
+    WHERE
+      ? = @title
+      SQL
   end
 
   def new(options)
@@ -67,6 +73,22 @@ class Play
 
   def create
     raise "#{self} already exist" if @id
-    PlayDBConnection.instance.execute()
+    PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
+      INSERT INTO
+        plays (title, year, playwright_id)
+      VALUES
+        (?,?,?)
+    SQL
+    @id = PlayDBConnection.instance.last_insert_row_id
+  end
+  
+  def get_plays
+    raise "#{self} doesn't exist" unless @playwright_id
+    PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
+    SELECT
+      *
+    WHERE
+      ? = @playwright_id
+    SQL
   end
 end
