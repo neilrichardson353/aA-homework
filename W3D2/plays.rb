@@ -23,7 +23,7 @@ class Play
     @id = options['id']
     @title = options['title']
     @year = options['year']
-    @playwright_id = options['playwright_id']
+  #  @playwright_id = options['playwright_id']
   end
 
   def create
@@ -71,17 +71,6 @@ class Play
     @playwright_id  = options['playwright_id']
   end
 
-  def create
-    raise "#{self} already exist" if @id
-    PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
-      INSERT INTO
-        plays (title, year, playwright_id)
-      VALUES
-        (?,?,?)
-    SQL
-    @id = PlayDBConnection.instance.last_insert_row_id
-  end
-  
   def get_plays
     raise "#{self} doesn't exist" unless @playwright_id
     PlayDBConnection.instance.execute(<<-SQL, @title, @year, @playwright_id)
