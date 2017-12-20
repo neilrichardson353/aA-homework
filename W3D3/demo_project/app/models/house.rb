@@ -1,4 +1,4 @@
-class Person < ApplicationRecord
+class House < ApplicationRecord
   validates :name, :house, presence: true
 
   belongs_to :house,
