@@ -1,18 +1,28 @@
 class BooksController < ApplicationController
   def index
-    # your code here
+    @books = Book.all
   end
 
   def new
-    # your code here
+    render :new
   end
 
   def create
-    # your code here
+    book = Book.new(book_params)
+    if book.save
+      redirect_to books_url
+    else
+      render json book.errors.full.messages, status: :unprocessable_entity
+    end
   end
 
   def destroy
-    # your code here
+    book = Books.find_by(params[:id])
+    if book.destroy
+      redirect_to books_url
+    else
+      render json "Can't detroy book, too good"
+    end
   end
 
   private
