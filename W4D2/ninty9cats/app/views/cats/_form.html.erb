@@ -1,0 +1,55 @@
+<% if action == :edit  %>
+  <% action_url = cat_url(cat)%>
+<%else%>
+  <% action_url = cats_url %>
+<%end%>
+
+<br>  <br>
+<form action="<%= action_url %>" method="post">
+  <%if action == :edit%>
+  <input type="hidden" name="_method" value="patch">
+  <%end%>
+  <label for="Name">Name</label>
+  <input id="name" type="text" name="cat[name]" value="<%=cat.name%>">
+
+  <br>  <br>
+
+  <label for="Birth_date">Birth Day!!!</label>
+  <input id="birth_date" type="date" name="cat[birth_date]" value="<%=cat.birth_date%>">
+
+    <br>  <br>
+
+<label for="Color">Color</label>
+  <select name="cat[color]">
+    <option disabled <%=cat.color ? "" : "selected"%> >----Select dickhole---</option>
+    <option value="blue" <%=cat.color == "Blue" ? "selected" : ""%>Blue</option>
+    <option value="orange" <%=cat.color == "Orange" ? "selected" : ""%>>Orange</option>
+    <option value="black" <%=cat.color == "Black" ? "selected" : ""%>>black</option>
+    <option value="tiger" <%=cat.color == "Tiger" ? "selected" : ""%>>tiger</option>
+    <option value="striped" <%=cat.color == "Striped" ? "selected" : ""%>>striped</option>
+    <option value="brown" <%=cat.color == "Brown" ? "selected" : ""%>>Brown</option>
+    <option value="mutt" <%=cat.color == "Mutt" ? "selected" : ""%>>Mutt</option>
+    <option value="ugly"<%=cat.color == "Ugly" ? "selected" : ""%>>Ugly like ur mom</option>
+  </select>
+
+    <br>  <br>
+
+<label for="Sex">Sex</label>
+  <select name="cat[sex]">
+    <option disabled <%cat.sex ? "" : "selected"%>>----Select dickhole---</option>
+    <option value="M" <%=cat.sex == "M" ? "selected" : ""%>>Male</option>
+    <option value="F"<%=cat.sex == "F" ? "selected" : ""%>>Female</option>
+    <option value="T" <%=cat.sex == "T" ? "selected" : ""%>>Yes, Please</option>
+  </select>
+
+  <br>  <br>
+
+  <label for="description">Description</label>
+  <textarea name="cat[description]">
+    <%= cat.description %>
+  </textarea>
+
+    <br>  <br>
+
+  <input type="submit" value="<%=(action == :edit) ? 'Update beauiful cat!!' : 'Welcom New gloriouse cat!!!'%>">
+</form>
