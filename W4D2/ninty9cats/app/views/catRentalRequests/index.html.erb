@@ -1,0 +1,10 @@
+<h1>Cat Rentals<h1>
+<ul>
+  <% rentals.each do |rental|%>
+  <li><%= rental.cat_id %></li>
+  <li><%= rental.start_date %></li>
+  <li><%= rental.end_date %></li>
+  <li><%= rental.status %></li>
+</ul>
+
+  <%end %>
