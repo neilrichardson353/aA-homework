@@ -2,6 +2,10 @@
 
 one:
   name: MyString
+  toyable_id: 1
+  toyable_type: MyString
 
 two:
   name: MyString
+  toyable_id: 1
+  toyable_type: MyString
