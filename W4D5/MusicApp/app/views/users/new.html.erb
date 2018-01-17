@@ -1,0 +1,23 @@
+<section class="page">
+  <div class="centered-box">
+    <h1>New User</h1>
+
+    <%= render 'shared/errors' %>
+
+    <form action="<%= users_url %>" method="post">
+      <input
+        type="hidden"
+        name="authenticity_token"
+        value="<%=form_authenticity_token %>"
+
+        <label for="user_email"> User Email</lable>
+          <input type="text"
+          name="user[email]"
+          id="user_email"
+          value="<%= @user.email%>"
+          <br>
+
+          <input type="submit"
+        </form>
+      </div>
+    </section>
