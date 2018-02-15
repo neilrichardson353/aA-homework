@@ -1,0 +1,41 @@
+<h1>BlackIT</h1>
+
+<% @user.errors.full_messages.each do |errors| %>
+<ul>
+  <%= errors %>
+</ul>
+<% end %>
+<% flash.now[:errors].each do |error| %>
+  <li><%= error %> </li>
+  <%  end %>
+<br>
+<br>
+<fieldset>
+  <legend>Sign IN</legend>
+
+<form action="/session" method="post">
+<input
+type="hidden"
+name="authenticity_token" value="<%= form_authenticity_token %>">
+
+User Name <br>
+<input type="text"
+name="user[name]"
+value="<%=@user.name%>"
+id="user_name">
+<br>
+
+Password <br>
+<input type="password"
+name="user[password]"
+id="password">
+<br>
+
+<input type="submit" value="Sign In">
+</form>
+</fieldset>
+<br>
+<br>
+<form action="/users/new" method="get">
+<input type="submit" value="Create New User">
+</form>

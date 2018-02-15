@@ -1,0 +1,84 @@
+<h1>BlackIT</h1>
+<br>
+<h2>Welcome <%= @user.name %> </h2>
+  <br>
+  <li>Your email is <%= @user.email %> </li>
+  <br>
+  <h2><%= @user.name %>'s Posts </h2>
+  <% unless @user_posts.nil? %>
+    <% @user_posts.each do |post| %>
+    <li> <%= post.title %> </li>
+    <% end %>
+  <% end %>
+  <br>
+<ul>
+  <% flash.now[:errors].each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<fieldset>
+  <legend>Subs</legend>
+  <br>
+  <form action="subs" method="post">
+    <input type="hidden"
+    name="authenticity_token"
+    value=" <%= form_authenticity_token %> ">
+
+<select name=" sub[title]">
+  <% @subs.each do |sub| %>
+<option value="<%= sub.title %>"><%= sub.title %></option>
+<% end %>
+  </select>
+  <br>
+  <br>
+  <label for="">Create New Sub</label>
+  <input type="text" name="sub[title]">
+  <br>
+  <br>
+<label for="">Description</label>
+  <textarea name="sub[description]"
+  rows="8" cols="80"></textarea>
+
+  <input type="hidden"
+  name="sub[moderator]" value=" <%= @user.id %> ">
+  <input type="hidden"
+  name="post[author]" value=" <%= @user.id %> ">
+
+  <br> <br>
+
+<fieldset>
+  <legend>New Post</legend>
+    <input
+    type="hidden"
+    name="authenticity_token"
+    value="form_authenticity_token">
+    <input type="hidden" name="post[url]" value="'url'">
+    <br>
+
+    <label for="">Title</label><br>
+    <input type="text" name="post[title]"
+    value=" title here ...">
+    <br>
+    <br>
+
+    <label for=""> Post:</label> <br>
+    <textarea name="post[content]"
+    rows="8" cols="80"
+    value="write here ..."></textarea>
+    <br>
+
+    <input type="submit" value="Post">
+  </form>
+</fieldset>
+</fieldset>
+<br>
+<br>
+
+<form action="session" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value=" <%= form_authenticity_token %>">
+<input type="submit" value="Log Out">
+</form>

@@ -1,0 +1,62 @@
+<h1>BlackIT</h1>
+
+  <%@user.errors.full_messages.each do |error| %>
+    <%=error%>
+    <%end%>
+
+<fieldset>
+  <legend>New User</legend>
+
+  <form action="/users" method="post">
+      <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+    <br>
+    User Name<br><input
+    type="text"
+    name="user[name]"
+    value="<%=@user.name%>"
+    id="user_name">
+    <br>
+    Email <br> <input
+    type="email"
+    name="user[email]"
+    value="<%=@user.email%>"
+    id="user_email">
+    <br>
+    Password<br><input
+    type="password"
+    name="user[password]"
+    id="user_password">
+    <br>
+    <input type="submit" value="Create User!">
+    </form>
+  </form>
+</fieldset>
+
+<br><br>
+<fieldset>
+  <legend>Sign IN</legend>
+
+<form action="/session" method="post">
+<input
+type="hidden"
+name="authenticity_token" value="<%= form_authenticity_token %>">
+
+User Name <br>
+<input type="text"
+name="user[name]"
+value="<%=@user.name%>"
+id="user_name">
+<br>
+
+Password <br>
+<input type="password"
+name="user[password]"
+id="password">
+<br>
+
+<input type="submit" value="Sign In">
+</form>
+</fieldset>
