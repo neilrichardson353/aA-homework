@@ -1,0 +1,49 @@
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  background: #eee;
+}
+.header{
+color: red;
+
+}
+.header a {
+  display: block;
+  padding: 10px 20px;
+  color: white;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+  background: #f00;
+  margin: auto;
+  width: 900px;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+
+.header-logo {
+  border-right: 1px solid #ccc;
+  font-weight: 700;
+
+}
+
+.header-logo:hover {
+  background: #000;
+}
+
+.header-list {
+  display: flex;
+}
+
+.header-list > li {
+  border-left: 1px solid #ccc;
+}
+
+.header-list > li:hover {
+  background: #000;
+
+}

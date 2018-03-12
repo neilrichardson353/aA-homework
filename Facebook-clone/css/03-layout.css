@@ -1,0 +1,25 @@
+.content {
+display: flex;
+flex-wrap: wrap;
+margin: 0 auto;
+background: #fff;
+width: 900px;
+border: 1px solid #ccc;
+border-top: 0;
+}
+
+.content-sidebar {
+width: 200px;
+padding: 20px;
+padding-right: 19px;
+border-right: 1px solid #ccc;
+min-height: 200px;
+
+}
+
+.content-main {
+  width: 620;
+  padding: 20px;
+  min-height: 200;
+
+}
